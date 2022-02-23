@@ -1,0 +1,195 @@
+@import url('https://fonts.cdnfonts.com/css/century-gothic');
+
+.App {
+  background-color: #282c34;
+  min-height: calc(100vh - 2rem);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 1rem;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Century Gothic', sans-serif !important;
+}
+
+.background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-filter: blur(5px);
+  filter: brightness(40%);
+}
+
+.content {
+  z-index: 3000;
+  flex: 1;
+  display: flex;
+  width: 100%;
+}
+
+.presentsTitle {
+  font-size: 2rem;
+}
+
+.presentsDescription {
+  font-size: 1rem;
+  color: #c4c2c2;
+  text-align: center;
+  margin-top: .5rem;
+}
+
+.buttonsContainer {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 3000;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.presentButton {
+  flex: 1;
+  background: #2B83D4;
+  padding: 0.5rem 1rem;
+  border-radius: .4rem;
+  text-align: center;
+  font-size: 1.3rem;
+  flex-grow: 0;
+}
+
+.presentButton + .presentButton {
+  margin-top: 1rem;
+}
+
+.bottomButtons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000
+}
+
+.bottomNextButton {
+  background: #2B83D4;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+
+.Typewriter {
+  background: #2B83D4;
+  padding: 0.25rem .5rem;
+  border-radius: .3rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.containerOuter {
+  background: white;
+}
+.container {
+  overflow: hidden;
+ padding: 0;
+  position: relative;
+}
+.hidden {
+  display: none;
+}
+.entry {
+  display: flex;
+  padding: 0.5rem 1rem;
+}
+.circle {
+  border: 2px solid #545556;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 20px;
+  position: absolute;
+  transition: border-color 300ms;
+  width: 20px;
+  margin-top: 3px;
+}
+.entry-label {
+  cursor: pointer;
+  margin-top: 1px;
+  padding-left: 40px;
+  user-select: none;
+  -moz-user-select: none;
+  color: #2B83D4;
+  font-weight: bold;
+  width: 100%;
+  height: 40px;
+}
+
+.highlight {
+  background: white;
+  border-radius: 50%;
+  height: 12px;
+  left: 1.4rem;
+  pointer-events: none;
+  position: absolute;
+  top: 1.05rem;
+  transition: transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
+  transform: translateY(-50px);
+  width: 12px;
+}
+.hidden:nth-child(1):checked ~ .highlight {
+  transform: translateY(0px);
+}
+.hidden:nth-child(3):checked ~ .highlight {
+  transform: translateY(57px);
+  background: #4D98EF;
+}
+.hidden:nth-child(5):checked ~ .highlight {
+  transform: translateY(114px);
+}
+.hidden:checked + .entry .circle {
+  border-color: white;
+}
+
+.progress {
+  width: 100%;
+  color: #4D98EF;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: 0.25rem 0 0.5rem 0;
+}
+
+.entry {
+  background: #4D98EF;
+
+  .circle {
+    border-color: white;
+  }
+
+  .entry-label {
+    color: white;
+  }
+}
+
+#input2 + label {
+  background: white !important;
+
+  .circle {
+    border-color: #4D98EF;
+  }
+
+  .entry-label {
+    color: #4D98EF;
+  }
+}
+
+.progress .Typewriter {
+  background: unset;
+  padding: 0.25rem .5rem;
+  border-radius: .3rem;
+  font-size: 1.2rem;
+  text-align: center;
+}

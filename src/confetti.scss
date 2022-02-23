@@ -1,0 +1,131 @@
+.confetti, .confetti2, .confetti3, .confetti4, .confetti5 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+  z-index: 1000;
+  h1 {
+    color: #fff;
+    font-size: 1.5em;
+  }
+  i {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 12px;
+    background: red;
+    opacity: 0;
+    z-index: 1000 !important;
+    filter: brightness(50%);
+  }
+  @for $i from 1 through 50 {
+    i:nth-of-type(#{$i}) {
+      transform: translate3d(
+                      random(190) - 100 + px,
+                      random(200) - 100 + px,
+                      0
+      )
+      rotate(random(360) + deg);
+      background: hsla(random(360), 100%, 50%, 1);
+      animation: bang 1500ms ease-out forwards infinite;
+      opacity: 0;
+    }
+  }
+}
+@keyframes bang {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.confetti2 {
+  i {
+    top: 20%;
+    left: 30%;
+  }
+  @for $i from 1 through 50 {
+    i:nth-of-type(#{$i}) {
+      transform: translate3d(
+                      random(190) - 100 + px,
+                      random(200) - 100 + px,
+                      0
+      )
+      rotate(random(360) + deg);
+      background: hsla(random(360), 100%, 50%, 1);
+      animation: bang 1500ms ease-out forwards infinite;
+      opacity: 0;
+      animation-delay: 400ms;
+    }
+  }
+}
+
+.confetti3 {
+  i {
+    top: 70%;
+    left: 80%
+  }
+  @for $i from 1 through 50 {
+    i:nth-of-type(#{$i}) {
+      transform: translate3d(
+                      random(190) - 100 + px,
+                      random(200) - 100 + px,
+                      0
+      )
+      rotate(random(360) + deg);
+      background: hsla(random(360), 100%, 50%, 1);
+      animation: bang 1500ms ease-out forwards infinite;
+      opacity: 0;
+      animation-delay: 800ms;
+    }
+  }
+}
+
+.confetti4 {
+  i {
+    top: 70%;
+    left: 20%
+  }
+  @for $i from 1 through 50 {
+    i:nth-of-type(#{$i}) {
+      transform: translate3d(
+                      random(190) - 100 + px,
+                      random(200) - 100 + px,
+                      0
+      )
+      rotate(random(360) + deg);
+      background: hsla(random(360), 100%, 50%, 1);
+      animation: bang 1500ms ease-out forwards infinite;
+      opacity: 0;
+      animation-delay: 1200ms;
+    }
+  }
+}
+
+
+.confetti5 {
+  i {
+    top: 20%;
+    left: 80%
+  }
+  @for $i from 1 through 50 {
+    i:nth-of-type(#{$i}) {
+      transform: translate3d(
+                      random(190) - 100 + px,
+                      random(200) - 100 + px,
+                      0
+      )
+      rotate(random(360) + deg);
+      background: hsla(random(360), 100%, 50%, 1);
+      animation: bang 1500ms ease-out forwards infinite;
+      opacity: 0;
+      animation-delay: 1400ms;
+    }
+  }
+}
