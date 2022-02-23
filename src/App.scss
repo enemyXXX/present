@@ -30,6 +30,8 @@
   flex: 1;
   display: flex;
   width: 100%;
+  align-items: center;
+  flex-direction: column;
 }
 
 .presentsTitle {
@@ -61,6 +63,10 @@
   text-align: center;
   font-size: 1.3rem;
   flex-grow: 0;
+
+  &.center {
+    margin-top: 14rem;
+  }
 }
 
 .presentButton + .presentButton {
@@ -192,4 +198,49 @@
   border-radius: .3rem;
   font-size: 1.2rem;
   text-align: center;
+}
+
+.typingBlock {
+  width: 100%;
+}
+
+.prizeContainer {
+  text-align: center;
+  margin-top: 8rem;
+
+  .prizeTitle {
+    font-weight: normal;
+    font-size: 1.4rem;
+    margin-bottom: .5rem;
+  }
+
+  .prize {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: black;
+    font-size: 5rem;
+    background: white;
+    border-radius: 1rem;
+    width: 8rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.guessForm {
+  margin-top: 1rem;
+
+  .prize {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: black;
+    font-size: 4rem;
+    background: white;
+    border-radius: 1rem;
+    width: 6rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
 }
