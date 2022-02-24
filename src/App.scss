@@ -237,9 +237,11 @@
     font-weight: bold;
     color: black;
     font-size: 4rem;
+    min-height: 5rem;
     background: white;
     border-radius: 1rem;
-    width: 6rem;
+    min-width: 6rem;
+    max-width: 6rem;
     margin-left: 50%;
     transform: translateX(-50%);
   }
