@@ -1,7 +1,7 @@
 export const girlsQuestions = [
     {
         question: 0,
-        questionDescription: 'Такс... Давай начнем с легкого. Как мы впервые познакмились?',
+        questionDescription: 'Такс... Давай начнем с легкого. Как мы впервые познакомились?',
         questionPreparationDescription: 'Лизочка Торел, тока попробуй не ответить',
         areYouSureDescription: 'Мы точно так познакомились?',
         correctAnswer: 1,
