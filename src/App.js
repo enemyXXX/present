@@ -1,5 +1,5 @@
 import './App.scss';
-import {useEffect, useMemo, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import './confetti.scss';
 import Confetti from "./Confetti";
 import SimplePage from "./SimplePage";
@@ -15,11 +15,29 @@ function App() {
     useEffect(() => {
         const backgroundMusic = document.getElementById('backgroundMusic');
         switch (activeTab) {
-            case 1: backgroundMusic.volume = 0.8; break;
-            case 2: backgroundMusic.volume = 0.6; break;
-            case 3: backgroundMusic.volume = 0.4; break;
+            case 1: backgroundMusic.volume = 0.4; break;
+            case 2: backgroundMusic.volume = 0.3; break;
+            case 3: backgroundMusic.volume = 0.2; break;
             case 4: backgroundMusic.volume = 0.2; break;
-            default: backgroundMusic.volume = 0.8; break;
+            default: backgroundMusic.volume = 0.4; break;
+        }
+    }, [activeTab])
+
+    const playMusic = useCallback(() => {
+        const music = document.getElementsByTagName('audio');
+        for (let item of music) {
+            if (item.paused && !item.played.length) {
+                item.play();
+            }
+        }
+    }, [activeTab]);
+
+    useEffect(() => {
+        if (activeTab < 4) {
+            document.removeEventListener('click', playMusic)
+            document.addEventListener('click', playMusic)
+        } else {
+            document.removeEventListener('click', playMusic)
         }
     }, [activeTab])
 
@@ -31,8 +49,8 @@ function App() {
         switch (activeTab) {
             case 1:
                 return <>
-                    <audio className="audio-element" autoPlay>
-                        <source src="./first.mp3"/>
+                    <audio id={'1'} className="audio-element">
+                        <source src="./first.mp3" />
                     </audio>
                     <SimplePage setActiveTab={() => setActiveTab(2)}
                                    delay={40} buttonText={'Ну давай'}
@@ -40,19 +58,23 @@ function App() {
                     </>
             case 2:
                 return <>
-                    <audio className="audio-element" autoPlay>
-                        <source src="./second.mp3"/>
-                    </audio>
                     <SimplePage setActiveTab={() => setActiveTab(3)}
                                    delay={40} buttonText={'Понятно. Где подарки?'}
                                    text={'Насколько ты хорошо нас знаешь - настолько же проще будет найти подарки. \n Надеемся ты найдешь!!!'} />
-                    </>
+                    <audio id={'2'} className="audio-element">
+                        <source src="./second.mp3" />
+                    </audio>
+                </>
             case 3:
                 return <>
+                    <audio id={'3'} className="audio-element">
+                        <source src="./third.mp3"/>
+                    </audio>
                     <div className={'buttonsContainer'}>
                         <SimpleButton text={'47 квартира'} onClick={() => setActiveTab(4)} />
                         <SimpleButton text={'народная'} onClick={() => console.log(1)} />
                     </div>
+
                     <Confetti />
                 </>
             case 4:
@@ -66,11 +88,11 @@ function App() {
 
     return (
         <div className="App">
-            <audio id={'backgroundMusic'} className="audio-element" autoPlay loop>
-                <source src="./background_music.mp3"/>
-            </audio>
             <div className={'background'} style={getBackgroundImage()}/>
             <div className={'content'}>{displayActiveTab()}</div>
+            <audio id={'backgroundMusic'} className="audio-element" loop>
+                <source src="./background_music.mp3"/>
+            </audio>
         </div>
     );
 }

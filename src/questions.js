@@ -1,8 +1,12 @@
 export const girlsQuestions = [
     {
         question: 0,
+        audio: 'first_47question.mp3',
+        confirmAudio: 'first_47questionConfirmation.mp3',
+        incorrectAudio: 'first_47incorrect.mp3',
+        correctAudio: 'first_47correct.mp3',
         questionDescription: 'Такс... Давай начнем с легкого. Как мы впервые познакомились?',
-        questionPreparationDescription: 'Лизочка Торел, тока попробуй не ответить',
+        questionPreparationDescription: 'Настачка: Лизочка Торел, тока попробуй не ответить',
         areYouSureDescription: 'Мы точно так познакомились?',
         correctAnswer: 1,
         chosenAnswer: 0,
@@ -26,6 +30,7 @@ export const girlsQuestions = [
     },
     {
         question: 1,
+        audio: 'first_47question.mp3',
         questionDescription: 'А какого числа мы в первый раз пошли на нжв?',
         areYouSureDescription: 'Ты хорошо подумала?',
         questionPreparationDescription: 'А щас немного труднее будет, но ты не переживай',
@@ -51,6 +56,7 @@ export const girlsQuestions = [
     },
     {
         question: 2,
+        audio: 'first_47question.mp3',
         questionDescription: 'Какой мой любимый сыр?',
         areYouSureDescription: 'Подумала хорошо?',
         questionPreparationDescription: 'Ксюша: Лизочка, а теперь тебе мой вопросик',
@@ -76,6 +82,7 @@ export const girlsQuestions = [
     },
     {
         question: 3,
+        audio: 'first_47question.mp3',
         questionDescription: 'Какого цвета мой макбук эйр?',
         areYouSureDescription: 'Подумала хорошо?',
         questionPreparationDescription: 'Настачка: это ты точно должна знать',

@@ -1,4 +1,4 @@
-import {useMemo, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import Typewriter from "typewriter-effect";
 
 const Form = ({questionsList, setActiveTab, foundPrizeDescription}) => {
@@ -9,6 +9,21 @@ const Form = ({questionsList, setActiveTab, foundPrizeDescription}) => {
     const [areYouSure, setAreYouSure] = useState(false);
     const [confirmedAnswer, setConfirmedAnswer] = useState(false);
     const [foundPrize, setFoundPrize] = useState(false);
+
+    const playMusic = useCallback(() => {
+        const music = document.getElementsByTagName('audio');
+        console.log(music)
+        for (let item of music) {
+            if (item.paused && !item.played.length) {
+                item.play();
+            }
+        }
+    }, [activeQuestion]);
+
+    useEffect(() => {
+        document.removeEventListener('click', playMusic)
+        document.addEventListener('click', playMusic)
+    }, [activeQuestion])
 
     const onSelect = (value) => {
         setQuestions(questions.map(question => ({
@@ -58,6 +73,9 @@ const Form = ({questionsList, setActiveTab, foundPrizeDescription}) => {
             <div className={'presentButton'} onClick={isLastQuestion() ? guessPresent : nextQuestion}>
                 {isLastQuestion() ? 'Найти подарок' : 'Дальше'}
             </div>
+            <audio id={'answer' + activeQuestion} key={activeQuestion} className="audio-element">
+                <source src={isCorrect ? question.correctAudio : question.incorrectAudio} />
+            </audio>
         </div>
     }
 
@@ -100,8 +118,14 @@ const Form = ({questionsList, setActiveTab, foundPrizeDescription}) => {
                 delay: 40,
             }}
         />
+        <audio id={'question' + activeQuestion} key={activeQuestion} className="audio-element">
+            <source src={question.audio} />
+        </audio>
         {areYouSure ? <div className={'presentButton center'} onClick={confirmAnswer}>
             Я уверена!!!
+            <audio id={'confirm' + activeQuestion} key={activeQuestion} className="audio-element">
+                <source src={question.confirmAudio} />
+            </audio>
         </div> : null}
         {
             confirmedAnswer ? displayAnswerResult() : null
