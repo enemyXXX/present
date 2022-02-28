@@ -5,7 +5,7 @@ import Confetti from "./Confetti";
 import SimplePage from "./SimplePage";
 import SimpleButton from "./SimpleButton";
 import Form from "./Form";
-import {girlsQuestions} from "./questions";
+import {girlsQuestions, myQuestions} from "./questions";
 
 
 
@@ -27,17 +27,33 @@ function App() {
         const music = document.getElementsByTagName('audio');
         for (let item of music) {
             if (item.paused && !item.played.length) {
-                item.play();
+                if (item.tabIndex > 0) {
+                    setTimeout(() => {
+                        item.play();
+                    }, [item.tabIndex])
+                } else {
+                    item.play();
+                }
+            }
+            if (item.id === 'confirm') {
+                const quizBackground = document.getElementById('quizBackground');
+                if (quizBackground) {
+                    quizBackground.volume = .2;
+                }
             }
         }
     }, [activeTab]);
 
     useEffect(() => {
         if (activeTab < 4) {
+            if (document.getElementById('backgroundMusic').paused) {
+                document.getElementById('backgroundMusic').play();
+            }
             document.removeEventListener('click', playMusic)
             document.addEventListener('click', playMusic)
         } else {
             document.removeEventListener('click', playMusic)
+            document.getElementById('backgroundMusic').pause();
         }
     }, [activeTab])
 
@@ -72,13 +88,16 @@ function App() {
                     </audio>
                     <div className={'buttonsContainer'}>
                         <SimpleButton text={'47 квартира'} onClick={() => setActiveTab(4)} />
-                        <SimpleButton text={'народная'} onClick={() => console.log(1)} />
+                        <SimpleButton text={'народная'} onClick={() => setActiveTab(5)} />
                     </div>
 
                     <Confetti />
                 </>
             case 4:
                 return <Form setActiveTab={() => setActiveTab(3)} questionsList={girlsQuestions} foundPrizeDescription={'Ну всё. Как отвечала - столько и получила. А теперь гадай!'} />
+            case 5:
+                return <Form setActiveTab={() => setActiveTab(3)} questionsList={myQuestions} foundPrizeDescription={'Ну всё. Как отвечала - столько и получила. А теперь гадай!'} />
+
             default:
                 return <some>
 

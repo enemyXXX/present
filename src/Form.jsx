@@ -10,21 +10,6 @@ const Form = ({questionsList, setActiveTab, foundPrizeDescription}) => {
     const [confirmedAnswer, setConfirmedAnswer] = useState(false);
     const [foundPrize, setFoundPrize] = useState(false);
 
-    const playMusic = useCallback(() => {
-        const music = document.getElementsByTagName('audio');
-        console.log(music)
-        for (let item of music) {
-            if (item.paused && !item.played.length) {
-                item.play();
-            }
-        }
-    }, [activeQuestion]);
-
-    useEffect(() => {
-        document.removeEventListener('click', playMusic)
-        document.addEventListener('click', playMusic)
-    }, [activeQuestion])
-
     const onSelect = (value) => {
         setQuestions(questions.map(question => ({
             ...question,
@@ -73,8 +58,11 @@ const Form = ({questionsList, setActiveTab, foundPrizeDescription}) => {
             <div className={'presentButton'} onClick={isLastQuestion() ? guessPresent : nextQuestion}>
                 {isLastQuestion() ? 'Найти подарок' : 'Дальше'}
             </div>
-            <audio id={'answer' + activeQuestion} key={activeQuestion} className="audio-element">
+            <audio id={'answer'} tabIndex={isCorrect ? 1000 : 2000} key={activeQuestion} className="audio-element">
                 <source src={isCorrect ? question.correctAudio : question.incorrectAudio} />
+            </audio>
+            <audio id={'answerEffect'} key={activeQuestion} className="audio-element">
+                <source src={isCorrect ? './correct_answer.wav' : './incorrect_answer.mp3'} />
             </audio>
         </div>
     }
@@ -118,19 +106,24 @@ const Form = ({questionsList, setActiveTab, foundPrizeDescription}) => {
                 delay: 40,
             }}
         />
-        <audio id={'question' + activeQuestion} key={activeQuestion} className="audio-element">
+        <audio id={'question'} key={activeQuestion} className="audio-element">
             <source src={question.audio} />
         </audio>
         {areYouSure ? <div className={'presentButton center'} onClick={confirmAnswer}>
             Я уверена!!!
-            <audio id={'confirm' + activeQuestion} key={activeQuestion} className="audio-element">
+            <audio id={'confirm'} key={activeQuestion} className="audio-element">
                 <source src={question.confirmAudio} />
             </audio>
         </div> : null}
         {
-            confirmedAnswer ? displayAnswerResult() : null
+            confirmedAnswer ? displayAnswerResult() : <audio tabIndex={10000} id={'quizBackground'} key={activeQuestion} className="audio-element" loop>
+                <source src={'./quiz_background.mp3'} />
+            </audio>
         }
         {foundPrize ? <div className={'guessForm'}>
+            <audio id={'foundPrize'} key={question.question} className="audio-element">
+                <source src={'./foundPrize.mp3'} />
+            </audio>
             {foundPrizes.map(prize => <div className={'prize'}>
                 {prize}
             </div>)}
