@@ -203,7 +203,7 @@ export const myQuestions = [
                 value: 3,
             },
         ],
-        prize: 'ь'
+        prize: 'Р'
     },
     {
         question: 1,
@@ -232,7 +232,7 @@ export const myQuestions = [
                 value: 3,
             },
         ],
-        prize: 'П'
+        prize: 'Б'
     },
     {
         question: 2,
@@ -261,7 +261,7 @@ export const myQuestions = [
                 value: 1,
             },
         ],
-        prize: 'Л'
+        prize: 'А'
     },
     {
         question: 3,

@@ -96,7 +96,7 @@ function App() {
             case 4:
                 return <Form setActiveTab={() => setActiveTab(3)} questionsList={girlsQuestions} foundPrizeDescription={'Ну всё. Как отвечала - столько и получила. А теперь гадай!'} />
             case 5:
-                return <Form setActiveTab={() => setActiveTab(3)} questionsList={myQuestions} foundPrizeDescription={'Ну всё. Как отвечала - столько и получила. А теперь гадай!'} />
+                return <Form setActiveTab={() => setActiveTab(3)} questionsList={myQuestions} foundPrizeDescription={'Ну всё. Как отвечала - столько и получила. А теперь гадай! (тут может быть лишняя буква)'} />
 
             default:
                 return <some>
